@@ -1,0 +1,1270 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LittleOnes - Luxury Eco-Friendly Baby Essentials</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.4/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/ScrollMagic/2.0.8/ScrollMagic.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/ScrollMagic/2.0.8/plugins/animation.gsap.min.js"></script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Montserrat:wght@300;400;500;600;700&display=swap');
+        @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Montserrat:wght@300;400;500;600;700&display=swap');
+:root {
+  --primary-color: #f0e6d2;
+  --secondary-color: #d4af37;
+  --accent-color: #7d5a3c;
+  --text-color: #333;
+  --background-color: #fff;
+  --gold-gradient: linear-gradient(45deg, #d4af37, #f2d272, #d4af37);
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Montserrat', sans-serif;
+  color: var(--text-color);
+  background-color: var(--background-color);
+  line-height: 1.6;
+}
+
+.container {
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+/* Header Styles */
+header {
+  background-color: rgba(255, 255, 255, 0.95);
+  padding: 20px 0;
+  position: fixed;
+  width: 100%;
+  z-index: 1000;
+  transition: all 0.3s ease;
+  backdrop-filter: blur(10px);
+}
+
+header.scrolled {
+  box-shadow: 0 2px 20px rgba(0, 0, 0, 0.1);
+}
+
+nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.logo {
+  font-family: 'Playfair Display', serif;
+  font-size: 32px;
+  font-weight: 700;
+  color: var(--accent-color);
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.nav-links {
+  display: flex;
+  gap: 30px;
+}
+
+.nav-links a {
+  color: var(--text-color);
+  text-decoration: none;
+  font-weight: 500;
+  transition: color 0.3s ease;
+  position: relative;
+}
+
+.nav-links a::before {
+  content: '';
+  position: absolute;
+  bottom: -5px;
+  left: 0;
+  width: 100%;
+  height: 2px;
+  background: var(--gold-gradient);
+  transform: scaleX(0);
+  transform-origin: right;
+  transition: transform 0.3s ease;
+}
+
+.nav-links a:hover::before {
+  transform: scaleX(1);
+  transform-origin: left;
+}
+
+.hero {
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background: linear-gradient(45deg, var(--primary-color), var(--background-color));
+    position: relative;
+    overflow: hidden;
+    padding: 0 5%;
+  }
+  
+  .hero::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: url('path/to/luxury-pattern.png') repeat;
+    opacity: 0.1;
+    animation: patternShift 20s linear infinite;
+  }
+  
+  @keyframes patternShift {
+    0% { transform: translateX(0) translateY(0); }
+    100% { transform: translateX(100px) translateY(100px); }
+  }
+  
+  .hero-content {
+    text-align: left;
+    z-index: 1;
+    max-width: 50%;
+    color: #000;
+  }
+  
+  .hero h1 {
+    font-family: 'Playfair Display', serif;
+    font-size: 60px;
+    margin-bottom: 20px;
+    background: var(--gold-gradient);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    animation: shimmer 2s infinite linear;
+  }
+  
+  @keyframes shimmer {
+    0% { background-position: -200% center; }
+    100% { background-position: 200% center; }
+  }
+  
+  .hero p {
+    font-size: 22px;
+    margin-bottom: 30px;
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.1);
+  }
+  
+  .cta-button {
+    display: inline-block;
+    padding: 15px 30px;
+    font-size: 18px;
+    color: white;
+    background: var(--gold-gradient);
+    text-decoration: none;
+    border-radius: 50px;
+    transition: all 0.3s ease;
+    box-shadow: 0 5px 15px rgba(212, 175, 55, 0.4);
+  }
+  
+  .cta-button:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 8px 20px rgba(212, 175, 55, 0.6);
+  }
+  
+  .hero-video {
+    max-width: 45%;
+    position: relative;
+    z-index: 1;
+  }
+  
+  #video-canvas {
+    width: 100%;
+    height: auto;
+    border-radius: 20px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+  }
+
+/* Featured Categories */
+.featured-categories {
+  padding: 100px 0;
+  background-color: var(--background-color);
+}
+
+.featured-categories h2 {
+  font-family: 'Playfair Display', serif;
+  font-size: 48px;
+  text-align: center;
+  margin-bottom: 50px;
+  position: relative;
+}
+
+.featured-categories h2::after {
+  content: '';
+  display: block;
+  width: 100px;
+  height: 3px;
+  background: var(--gold-gradient);
+  margin: 20px auto 0;
+}
+
+.category-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 30px;
+}
+
+.category-card {
+  position: relative;
+  overflow: hidden;
+  border-radius: 10px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+  transition: all 0.3s ease;
+}
+
+.category-card:hover {
+  transform: translateY(-10px) scale(1.02);
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
+}
+
+.category-card img {
+  width: 100%;
+  height: 300px;
+  object-fit: cover;
+  transition: transform 0.3s ease;
+}
+
+.category-card:hover img {
+  transform: scale(1.1);
+}
+
+.category-overlay {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: linear-gradient(to top, rgba(0, 0, 0, 0.8), transparent);
+  padding: 20px;
+  color: white;
+  transform: translateY(100%);
+  transition: transform 0.3s ease;
+}
+
+.category-card:hover .category-overlay {
+  transform: translateY(0);
+}
+
+.category-overlay h3 {
+  font-family: 'Playfair Display', serif;
+  font-size: 24px;
+  margin-bottom: 10px;
+}
+
+/* Bestsellers Section */
+.bestsellers {
+  padding: 100px 0;
+  background-color: var(--primary-color);
+  position: relative;
+  overflow: hidden;
+}
+
+.bestsellers::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: url('abstract-paper-flower-pattern-656688606-5acfba2eae9ab80038461ca0.jpg') repeat;
+  opacity: 0.05;
+}
+
+.bestsellers h2 {
+  font-family: 'Playfair Display', serif;
+  font-size: 48px;
+  text-align: center;
+  margin-bottom: 50px;
+  position: relative;
+  z-index: 1;
+}
+
+.product-slider {
+  display: flex;
+  gap: 30px;
+  overflow-x: auto;
+  padding-bottom: 30px;
+  scroll-snap-type: x mandatory;
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+}
+
+.product-slider::-webkit-scrollbar {
+  display: none;
+}
+
+.product-card {
+  flex: 0 0 300px;
+  background-color: white;
+  border-radius: 10px;
+  overflow: hidden;
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+  transition: all 0.3s ease;
+  scroll-snap-align: start;
+}
+
+.product-card:hover {
+  transform: translateY(-10px) scale(1.02);
+  box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2);
+}
+
+.product-card img {
+  width: 100%;
+  height: 200px;
+  object-fit: cover;
+  transition: transform 0.3s ease;
+}
+
+.product-card:hover img {
+  transform: scale(1.1);
+}
+
+.product-info {
+  padding: 20px;
+}
+
+.product-info h3 {
+  font-family: 'Playfair Display', serif;
+  font-size: 20px;
+  margin-bottom: 10px;
+}
+
+.product-info p {
+  margin-bottom: 15px;
+  font-size: 14px;
+}
+
+.product-price {
+  font-weight: 600;
+  color: var(--accent-color);
+  font-size: 18px;
+  margin-bottom: 15px;
+}
+
+.add-to-cart {
+  background: var(--gold-gradient);
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  width: 100%;
+}
+
+.add-to-cart:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 5px 15px rgba(212, 175, 55, 0.4);
+}
+
+/* Sustainability Section */
+.sustainability {
+  padding: 100px 0;
+  background-color: var(--background-color);
+  position: relative;
+  overflow: hidden;
+}
+
+.sustainability::before {
+  content: '';
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  background: radial-gradient(circle, rgba(212, 175, 55, 0.1) 0%, rgba(255, 255, 255, 0) 70%);
+  animation: rotate 20s linear infinite;
+}
+
+@keyframes rotate {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+.sustainability h2 {
+  font-family: 'Playfair Display', serif;
+  font-size: 48px;
+  text-align: center;
+  margin-bottom: 50px;
+  position: relative;
+  z-index: 1;
+}
+
+.sustainability-content {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 50px;
+  position: relative;
+  z-index: 1;
+}
+
+.sustainability-text {
+  flex: 1;
+}
+
+.sustainability-image {
+  flex: 1;
+  position: relative;
+}
+
+.sustainability-image img {
+  width: 100%;
+  border-radius: 10px;
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+}
+
+.sustainability-image::before {
+  content: '';
+  position: absolute;
+  top: 20px;
+  left: 20px;
+  right: -20px;
+  bottom: -20px;
+  border: 2px solid var(--secondary-color);
+  border-radius: 10px;
+  z-index: -1;
+}
+
+/* Testimonials Section */
+.testimonials {
+  padding: 100px 0;
+  background-color: var(--primary-color);
+  position: relative;
+  overflow: hidden;
+}
+
+.testimonials::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: url('OIP (29).jpg') repeat;
+  opacity: 0.05;
+}
+
+.testimonials h2 {
+  font-family: 'Playfair Display', serif;
+  font-size: 48px;
+  text-align: center;
+  margin-bottom: 50px;
+  position: relative;
+  z-index: 1;
+}
+
+.testimonial-slider {
+  display: flex;
+  gap: 30px;
+  overflow-x: auto;
+  padding-bottom: 30px;
+  scroll-snap-type: x mandatory;
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+}
+
+.testimonial-slider::-webkit-scrollbar {
+  display: none;
+}
+
+.testimonial-card {
+  flex: 0 0 400px;
+  background-color: white;
+  border-radius: 10px;
+  padding: 30px;
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+  scroll-snap-align: start;
+  transition: all 0.3s ease;
+  position: relative;
+}
+
+.testimonial-card:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2);
+}
+
+.testimonial-card::before {
+  content: '"';
+  font-family: 'Playfair Display', serif;
+  font-size: 100px;
+  position: absolute;
+  top: -20px;
+  left: 20px;
+  color: rgba(212, 175, 55, 0.1);
+}
+
+.testimonial-content {
+  font-style: italic;
+  margin-bottom: 20px;
+  position: relative;
+  z-index: 1;
+}
+
+.testimonial-author {
+  font-weight: 600;
+  text-align: right;
+}
+
+/* Footer Styles */
+footer {
+  background-color: var(--accent-color);
+  color: white;
+  padding: 50px 0;
+  position: relative;
+  overflow: hidden;
+}
+
+footer::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: url('path/to/footer-pattern.png') repeat;
+  opacity: 0.05;
+}
+
+.footer-content {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  position: relative;
+  z-index: 1;
+}
+
+.footer-column {
+  flex: 1;
+  margin-bottom: 30px;
+  min-width: 200px;
+}
+
+.footer-column h3 {
+  font-family: 'Playfair Display', serif;
+  font-size: 24px;
+  margin-bottom: 20px;
+  position: relative;
+}
+
+.footer-column h3::after {
+  content: '';
+  display: block;
+  width: 40px;
+  height: 2px;
+  background: var(--gold-gradient);
+  margin-top: 10px;
+}
+
+.footer-links {
+  list-style: none;
+}
+
+.footer-links li {
+  margin-bottom: 10px;
+}
+
+.footer-links a {
+  color: white;
+  text-decoration: none;
+  transition: all 0.3s ease;
+  position: relative;
+}
+
+.footer-links a::before {
+  content: '';
+  position: absolute;
+  bottom: -2px;
+  left: 0;
+  width: 100%;
+  height: 1px;
+  background: var(--gold-gradient);
+  transform: scaleX(0);
+  transform-origin: right;
+  transition: transform 0.3s ease;
+}
+
+.footer-links a:hover::before {
+  transform: scaleX(1);
+  transform-origin: left;
+}
+
+.social-icons {
+  display: flex;
+  gap: 15px;
+}
+
+.social-icons a {
+  color: white;
+  font-size: 24px;
+  transition: all 0.3s ease;
+}
+
+.social-icons a:hover {
+  color: var(--secondary-color);
+  transform: translateY(-3px);
+}
+
+.newsletter-form {
+  display: flex;
+  margin-top: 20px;
+}
+
+.newsletter-form input {
+  flex: 1;
+  padding: 12px;
+  border: none;
+  border-radius: 5px 0 0 5px;
+  font-family: 'Montserrat', sans-serif;
+}
+
+.newsletter-form button {
+  background: var(--gold-gradient);
+  color: white;
+  border: none;
+  padding: 12px 20px;
+  border-radius: 0 5px 5px 0;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 600;
+}
+
+.newsletter-form button:hover {
+  transform: translateX(3px);
+  box-shadow: -3px 0 10px rgba(212, 175, 55, 0.4);
+}
+
+/* Cart Icon Styles */
+#cart-icon {
+  position: relative;
+  cursor: pointer;
+  font-size: 24px;
+  color: var(--accent-color);
+  transition: all 0.3s ease;
+}
+
+#cart-icon:hover {
+  transform: scale(1.1);
+}
+
+#cart-count {
+  position: absolute;
+  top: -8px;
+  right: -8px;
+  background: var(--gold-gradient);
+  color: white;
+  border-radius: 50%;
+  padding: 2px 6px;
+  font-size: 12px;
+  font-weight: 600;
+}
+
+/* Cart Modal Styles */
+.cart-modal {
+  display: none;
+  position: fixed;
+  top: 0;
+  right: -400px;
+  width: 400px;
+  height: 100%;
+  background-color: white;
+  box-shadow: -2px 0 20px rgba(0, 0, 0, 0.1);
+  z-index: 1001;
+  padding: 20px;
+  overflow-y: auto;
+  transition: right 0.3s ease;
+}
+
+.cart-modal.open {
+  right: 0;
+}
+
+.cart-modal h2 {
+  font-family: 'Playfair Display', serif;
+  font-size: 32px;
+  margin-bottom: 20px;
+  text-align: center;
+  position: relative;
+}
+
+.cart-modal h2::after {
+  content: '';
+  display: block;
+  width: 60px;
+  height: 2px;
+  background: var(--gold-gradient);
+  margin: 10px auto 0;
+}
+
+.cart-items {
+  margin-bottom: 20px;
+}
+
+.cart-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 15px;
+  padding-bottom: 15px;
+  border-bottom: 1px solid #eee;
+}
+
+.cart-item-info {
+  flex: 1;
+}
+
+.cart-item-name {
+  font-weight: 600;
+  margin-bottom: 5px;
+}
+
+.cart-item-price {
+  color: var(--accent-color);
+}
+
+.cart-item-quantity {
+  display: flex;
+  align-items: center;
+}
+
+.quantity-btn {
+  background: var(--gold-gradient);
+  border: none;
+  width: 25px;
+  height: 25px;
+  border-radius: 50%;
+  font-size: 16px;
+  color: white;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.quantity-btn:hover {
+  transform: scale(1.1);
+  box-shadow: 0 2px 5px rgba(212, 175, 55, 0.4);
+}
+
+.cart-item-quantity span {
+  margin: 0 10px;
+  font-weight: 600;
+}
+
+.cart-item-remove {
+  background-color: #ff4d4d;
+  color: white;
+  border: none;
+  padding: 5px 10px;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.cart-item-remove:hover {
+  background-color: #ff1a1a;
+  transform: translateX(-3px);
+}
+
+.cart-total {
+  font-weight: bold;
+  font-size: 18px;
+  margin-bottom: 20px;
+  text-align: right;
+}
+
+.checkout-button {
+  display: block;
+  width: 100%;
+  background: var(--gold-gradient);
+  color: white;
+  border: none;
+  padding: 15px;
+  border-radius: 5px;
+  font-size: 18px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  text-align: center;
+  text-decoration: none;
+}
+
+.checkout-button:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 5px 15px rgba(212, 175, 55, 0.4);
+}
+
+/* Responsive Design */
+@media (max-width: 1200px) {
+  .category-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+@media (max-width: 992px) {
+  .category-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .sustainability-content {
+    flex-direction: column;
+  }
+  
+  .sustainability-image::before {
+    display: none;
+  }
+}
+
+@media (max-width: 768px) {
+  .hero h1 {
+    font-size: 48px;
+  }
+
+  .hero p {
+    font-size: 18px;
+  }
+
+  .category-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .cart-modal {
+    width: 100%;
+  }
+  
+  .nav-links {
+    display: none;
+  }
+  
+  /* Add styles for mobile menu button */
+  .mobile-menu-btn {
+    display: block;
+    font-size: 24px;
+    color: var(--accent-color);
+    cursor: pointer;
+  }
+  
+  /* Mobile menu styles */
+  .mobile-menu {
+    position: fixed;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background-color: var(--background-color);
+    z-index: 1000;
+    transition: left 0.3s ease;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  .mobile-menu.open {
+    left: 0;
+  }
+  
+  .mobile-menu a {
+    font-size: 24px;
+    margin-bottom: 20px;
+    color: var(--accent-color);
+    text-decoration: none;
+    transition: all 0.3s ease;
+  }
+  
+  .mobile-menu a:hover {
+    color: var(--secondary-color);
+    transform: scale(1.1);
+  }
+}
+
+/* Animations */
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes slideInFromBottom {
+  from { transform: translateY(50px); opacity: 0; }
+  to { transform: translateY(0); opacity: 1; }
+}
+
+@keyframes pulse {
+  0% { transform: scale(1); }
+  50% { transform: scale(1.05); }
+  100% { transform: scale(1); }
+}
+
+/* Apply animations */
+.hero, .featured-categories, .bestsellers, .sustainability, .testimonials {
+  animation: fadeIn 1s ease-out;
+}
+
+.hero h1, .hero p, .cta-button {
+  animation: slideInFromBottom 1s ease-out;
+}
+
+.category-card, .product-card, .testimonial-card {
+  animation: fadeIn 0.5s ease-out;
+}
+
+.cta-button, .add-to-cart, .checkout-button {
+  animation: pulse 2s infinite;
+}
+
+/* Scrollbar Styles */
+::-webkit-scrollbar {
+  width: 10px;
+}
+
+::-webkit-scrollbar-track {
+  background: #f1f1f1;
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--gold-gradient);
+  border-radius: 5px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--accent-color);
+}
+
+/* Custom Cursor */
+body {
+  cursor: url('path/to/custom-cursor.png'), auto;
+}
+
+/* Focus Styles */
+:focus {
+  outline: 2px solid var(--secondary-color);
+  outline-offset: 2px;
+}
+
+/* Print Styles */
+@media print {
+  header, footer, .cta-button, .add-to-cart, .checkout-button {
+    display: none;
+  }
+  
+  body {
+    font-size: 12pt;
+    line-height: 1.5;
+  }
+  
+  h1, h2, h3 {
+    page-break-after: avoid;
+  }
+  
+  img {
+    max-width: 100% !important;
+  }
+}
+    </style>
+</head>
+<body>
+    <header>
+        <nav class="container">
+            <div class="logo">LittleOnes</div>
+            <div class="nav-links">
+                <a href="#home">Home</a>
+                <a href="#categories">Categories</a>
+                <a href="#bestsellers">Bestsellers</a>
+                <a href="#sustainability">Sustainability</a>
+                <a href="#about">About</a>
+                <div id="cart-icon">
+                    🛒
+                    <span id="cart-count">0</span>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <main>
+        
+        <section id="home" class="hero">
+            <div class="hero-content">
+              <h1>Luxury Meets Sustainability</h1>
+              <p>Discover premium eco-friendly essentials for your little ones</p>
+              <a href="#categories" class="cta-button">Explore Collections</a>
+            </div>
+            <div class="hero-video">
+              <video id="video-canvas" autoplay muted loop>
+                <source src="Untitled video - Made with Clipchamp.mp4" type="video/mp4">
+                Your browser does not support the video tag.
+              </video>
+            </div>
+          </section>
+
+        <section id="categories" class="featured-categories">
+            <div class="container">
+                <h2>Curated Collections</h2>
+                <div class="category-grid">
+                    <div class="category-card">
+                        <img src="OIP (24).jpg" alt="Organic Clothing">
+                        <div class="category-overlay">
+                            <h3>Organic Clothing</h3>
+                            <p>Gentle on skin, kind to the planet</p>
+                        </div>
+                    </div>
+                    <div class="category-card">
+                        <img src="OIP (25).jpg" alt="Natural Nursery">
+                        <div class="category-overlay">
+                            <h3>Natural Nursery</h3>
+                            <p>Create a serene space for your baby</p>
+                        </div>
+                    </div>
+                    <div class="category-card">
+                        <img src="OIP (26).jpg" alt="Eco-Friendly Toys">
+                        <div class="category-overlay">
+                            <h3>Eco-Friendly Toys</h3>
+                            <p>Playtime with a purpose</p>
+                        </div>
+                    </div>
+                    <div class="category-card">
+                        <img src="Baby02007_1_1.jpg" alt="Sustainable Diapering">
+                        <div class="category-overlay">
+                            <h3>Sustainable Diapering</h3>
+                            <p>Comfort for baby, better for the environment</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="bestsellers" class="bestsellers">
+            <div class="container">
+                <h2>Bestselling Treasures</h2>
+                <div class="product-slider">
+                    <div class="product-card">
+                        <img src="OIP (24).jpg" alt="Organic Cotton Onesie">
+                        <div class="product-info">
+                            <h3>Organic Cotton Onesie</h3>
+                            <p>Soft, breathable, and perfect for sensitive skin</p>
+                            <div class="product-price">$29.99</div>
+                            <button class="add-to-cart" data-id="1" data-name="Organic Cotton Onesie" data-price="29.99">Add to Cart</button>
+                        </div>
+                    </div>
+                    <div class="product-card">
+                        <img src="OIP (27).jpg" alt="Bamboo Swaddle Blanket">
+                        <div class="product-info">
+                            <h3>Bamboo Swaddle Blanket</h3>
+                            <p>Ultra-soft and temperature-regulating</p>
+                            <div class="product-price">$34.99</div>
+                            <button class="add-to-cart" data-id="2" data-name="Bamboo Swaddle Blanket" data-price="34.99">Add to Cart</button>
+                        </div>
+                    </div>
+                    <div class="product-card">
+                        <img src="original_natural-rubber-teethers.jpg" alt="Natural Rubber Teether">
+                        <div class="product-info">
+                            <h3>Natural Rubber Teether</h3>
+                            <p>Soothing relief for teething babies</p>
+                            <div class="product-price">$14.99</div>
+                            <button class="add-to-cart" data-id="3" data-name="Natural Rubber Teether" data-price="14.99">Add to Cart</button>
+                        </div>
+                    </div>
+                    <div class="product-card">
+                        <img src="OIP (28).jpg" alt="Organic Muslin Crib Sheets">
+                        <div class="product-info">
+                            <h3>Organic Muslin Crib Sheets</h3>
+                            <p>Breathable and gentle for peaceful sleep</p>
+                            <div class="product-price">$39.99</div>
+                            <button class="add-to-cart" data-id="4" data-name="Organic Muslin Crib Sheets" data-price="39.99">Add to Cart</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="sustainability" class="sustainability">
+            <div class="container">
+                <h2>Our Commitment to a Greener Future</h2>
+                <div class="sustainability-content">
+                    <div class="sustainability-text">
+                        <p>At LittleOnes, we believe in nurturing not just your child, but also the world they'll inherit. Our commitment to sustainability goes beyond eco-friendly products - it's woven into every aspect of our business.</p>
+                        <p>From sourcing organic materials to partnering with ethical manufacturers, we ensure that each item in our collection meets the highest standards of quality and sustainability. Our packaging is made from recycled materials, and we're constantly innovating to reduce our carbon footprint.</p>
+                        <p>By choosing LittleOnes, you're not just dressing your child - you're investing in a cleaner, greener future for all children.</p>
+                    </div>
+                    <div class="sustainability-image">
+                        <img src="baby-s-sock-pair-woolen-shoes-pacifier-cap-milk-bottle-toy-orange-background.jpg" alt="Sustainable Baby Products">
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="testimonials">
+            <div class="container">
+                <h2>What Parents Are Saying</h2>
+                <div class="testimonial-slider">
+                    <div class="testimonial-card">
+                        <div class="testimonial-content">
+                            "LittleOnes has transformed the way I shop for my baby. The quality is unmatched, and knowing that every product is eco-friendly gives me peace of mind."
+                        </div>
+                        <div class="testimonial-author">- Sarah M., Mother of two</div>
+                    </div>
+                    <div class="testimonial-card">
+                        <div class="testimonial-content">
+                            "I love how LittleOnes combines luxury with sustainability. My baby's skin has never been happier, and I feel good about my choices."
+                        </div>
+                        <div class="testimonial-author">- Michael L., New father</div>
+                    </div>
+                    <div class="testimonial-card">
+                        <div class="testimonial-content">
+                            "The attention to detail in every product is amazing. LittleOnes has become my go-to for all things baby - I couldn't recommend them more!"
+                        </div>
+                        <div class="testimonial-author">- Emma K., Mother of three</div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-column">
+                    <h3>Shop</h3>
+                    <ul class="footer-links">
+                        <li><a href="#">New Arrivals</a></li>
+                        <li><a href="#">Bestsellers</a></li>
+                        <li><a href="#">Organic Clothing</a></li>
+                        <li><a href="#">Natural Nursery</a></li>
+                        <li><a href="#">Eco-Friendly Toys</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h3>About Us</h3>
+                    <ul class="footer-links">
+                        <li><a href="#">Our Story</a></li>
+                        <li><a href="#">Sustainability</a></li>
+                        <li><a href="#">Ethical Manufacturing</a></li>
+                        <li><a href="#">Blog</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h3>Customer Care</h3>
+                    <ul class="footer-links">
+                        <li><a href="#">Contact Us</a></li>
+                        <li><a href="#">Shipping & Returns</a></li>
+                        <li><a href="#">FAQ</a></li>
+                        <li><a href="#">Size Guide</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h3>Connect With Us</h3>
+                    <div class="social-icons">
+                        <a href="#" aria-label="Facebook">📘</a>
+                        <a href="#" aria-label="Instagram">📷</a>
+                        <a href="#" aria-label="Twitter">🐦</a>
+                        <a href="#" aria-label="Pinterest">📌</a>
+                    </div>
+                    <h3>Stay Updated</h3>
+                    <form class="newsletter-form">
+                        <input type="email" placeholder="Enter your email" required>
+                        <button type="submit">Subscribe</button>
+                    </form>
+                </div>
+            </div>
+            <p>&copy; 2024 LittleOnes. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <div class="cart-modal" id="cart-modal">
+        <h2>Your Shopping Cart</h2>
+        <div class="cart-items" id="cart-items"></div>
+        <div class="cart-total" id="cart-total">Total: $0.00</div>
+        <button class="checkout-button">Proceed to Checkout</button>
+    </div>
+
+    <script>
+        // Shopping cart functionality
+        const cartIcon = document.getElementById('cart-icon');
+        const cartModal = document.getElementById('cart-modal');
+        const cartItems = document.getElementById('cart-items');
+        const cartTotal = document.getElementById('cart-total');
+        const cartCount = document.getElementById('cart-count');
+        let cart = [];
+    
+        cartIcon.addEventListener('click', () => {
+            cartModal.classList.toggle('open');
+        });
+    
+        document.querySelectorAll('.add-to-cart').forEach(button => {
+            button.addEventListener('click', () => {
+                const id = button.getAttribute('data-id');
+                const name = button.getAttribute('data-name');
+                const price = parseFloat(button.getAttribute('data-price'));
+    
+                addToCart(id, name, price);
+                updateCartUI();
+            });
+        });
+    
+        function addToCart(id, name, price) {
+            const existingItem = cart.find(item => item.id === id);
+            if (existingItem) {
+                existingItem.quantity++;
+            } else {
+                cart.push({ id, name, price, quantity: 1 });
+            }
+        }
+    
+        function updateCartUI() {
+            cartItems.innerHTML = '';
+            let total = 0;
+    
+            cart.forEach(item => {
+                const itemElement = document.createElement('div');
+                itemElement.classList.add('cart-item');
+                itemElement.innerHTML = `
+                    <div class="cart-item-info">
+                        <div class="cart-item-name">${item.name}</div>
+                        <div class="cart-item-price">$${item.price.toFixed(2)}</div>
+                    </div>
+                    <div class="cart-item-quantity">
+                        <button class="quantity-btn minus" data-id="${item.id}">-</button>
+                        <span>${item.quantity}</span>
+                        <button class="quantity-btn plus" data-id="${item.id}">+</button>
+                    </div>
+                    <button class="cart-item-remove" data-id="${item.id}">Remove</button>
+                `;
+                cartItems.appendChild(itemElement);
+    
+                total += item.price * item.quantity;
+            });
+    
+            cartTotal.textContent = `Total: $${total.toFixed(2)}`;
+            cartCount.textContent = cart.reduce((sum, item) => sum + item.quantity, 0);
+        }
+    
+        cartItems.addEventListener('click', (e) => {
+            if (e.target.classList.contains('quantity-btn')) {
+                const id = e.target.getAttribute('data-id');
+                const item = cart.find(item => item.id === id);
+                if (e.target.classList.contains('plus')) {
+                    item.quantity++;
+                } else if (e.target.classList.contains('minus')) {
+                    if (item.quantity > 1) {
+                        item.quantity--;
+                    } else {
+                        cart = cart.filter(cartItem => cartItem.id !== id);
+                    }
+                }
+                updateCartUI();
+            } else if (e.target.classList.contains('cart-item-remove')) {
+                const id = e.target.getAttribute('data-id');
+                cart = cart.filter(item => item.id !== id);
+                updateCartUI();
+            }
+        });
+    </script>
+    </body>
+    </html>
